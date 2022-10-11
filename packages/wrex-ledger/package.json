@@ -1,0 +1,25 @@
+{
+  "name": "@wrex/wrex-ledger",
+  "version": "0.0.15",
+  "description": "Ledger hardware integration for signing WREX transactions",
+  "author": "Frank Fox",
+  "email": "ffox77@gmail.com",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/types/index.d.ts",
+  "homepage": "https://github.com/ductridev/wrex.js#readme",
+  "scripts": {
+    "prebuild": "rimraf dist/",
+    "build": "npx tsc && tsc -p tsconfig.cjs.json",
+    "rollup": "rollup -c ../../scripts/config/rollup.config.js",
+    "prerelease": "npm run build && npm version patch",
+    "release": "node ../../scripts/package/copy && npm run release:npm",
+    "release:npm": "npm publish ./dist -access public",
+    "release:preflight": "npm pack ./dist --dry-run"
+  },
+  "dependencies": {
+    "@wrex/wrex": "1.2.3",
+    "bignumber.js": "^9.0.1"
+  }
+}

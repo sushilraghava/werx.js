@@ -1,21 +1,20 @@
 {
-  "name": "@wrex/wrex-monorepo",
-  "version": "1.2.0-beta.0",
+  "name": "@wrex/wrex",
+  "version": "1.2.3",
   "description": "WREX HyperGraph Network JavaScript API",
   "author": "Hoang Duc Tri",
   "email": "trihd123@gmail.com",
   "license": "MIT",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "typings": "types/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/types/index.d.ts",
   "homepage": "https://github.com/ductridev/wrex.js#readme",
   "scripts": {
     "clean": "rimraf dist/",
     "prebuild": "npm run clean",
+    "build": "tsc && tsc -p tsconfig.cjs.json",
     "build-rollup": "rollup -c scripts/config/rollup.config.js && rollup -c scripts/config/rollup.config.js --environment NODE_ENV:production",
     "build-all": "npm run build && npm run build-rollup",
-    "build": "npm run build --workspaces",
-    "pack:all": "npm pack --workspaces",
     "prerelease": "npm run build && npm version patch --no-git-tag-version",
     "release": "node ./scripts/package/copy && npm run release:npm",
     "release:npm": "npm publish ./dist -access public",
@@ -28,12 +27,22 @@
   "bugs": {
     "url": "https://github.com/ductridev/wrex.js/issues"
   },
+  "dependencies": {
+    "@wrex/wrex-core": "1.2.2",
+    "@wrex/wrex-keystore": "1.2.2",
+    "@wrex/wrex-network": "1.2.2",
+    "@wrex/wrex-wallet": "2.0.0",
+    "cross-fetch": "^3.1.5"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-typescript": "^8.2.0",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.11.2",
+    "node-fetch": "^2.6.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.42.4",
     "rollup-plugin-node-builtins": "^2.0.0",
@@ -43,20 +52,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript-paths": "^1.2.2",
     "standard-version": "^9.0.0",
-    "typescript": "^4.6.4"
-  },
-  "workspaces": [
-    "packages/wrex-core",
-    "packages/wrex-network",
-    "packages/wrex-keyring",
-    "packages/wrex-keystore",
-    "packages/wrex-wallet",
-    "packages/wrex-xchain-ethereum",
-    "packages/wrex",
-    "packages/wrex-ledger",
-    "packages/scratch"
-  ],
-  "dependencies": {
-    "npm": "^8.10.0"
+    "typescript": "^4.0.3",
+    "webpack-config-utils": "^2.3.1"
   }
 }

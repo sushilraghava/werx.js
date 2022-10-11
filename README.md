@@ -1,7 +1,7 @@
 
-# DAG4 - DAG JavaScript SDK
+# WREX.JS - WREX JavaScript SDK
 
-This is the DAG [JavaScript SDK][docs] for Constellation Network.
+This is the WREX [JavaScript SDK][docs] for WREX Hypergraph Network.
 
 Please read the [documentation][docs] for more detailed instructions. The following includes basic install and configuration.
 
@@ -10,13 +10,13 @@ Please read the [documentation][docs] for more detailed instructions. The follow
 ### Node
 
 ```bash
-npm install @stardust-collective/dag4
+npm install @wrex/wrex
 ```
 
 ### Yarn
 
 ```bash
-yarn add @stardust-collective/dag4
+yarn add @wrex/wrex
 ```
 
 ## Usage
@@ -25,91 +25,91 @@ yarn add @stardust-collective/dag4
 
 Create a private key
 ```js
-const pk = dag4.keyStore.generatePrivateKey();
+const pk = wrex.keyStore.generatePrivateKey();
 ```
 
 Login with the private key
 ```js
-dag4.account.loginPrivateKey(pk);
+wrex.account.loginPrivateKey(pk);
 ```
 
-Check DAG address
+Check WREX address
 ```js
-const address = dag4.account.address;
+const address = wrex.account.address;
 ```
 
 ### Connecting to the network
 ```js
-import { dag4 } from '@stardust-collective/dag4';
+import { wrex } from '@wrex/wrex';
 
 // Connect to default network endpoints
-dag4.account.connect({
+wrex.account.connect({
     networkVersion: '2.0',
     testnet: true
 })
 
 // Or provide specific configuration
 // L0/L1 urls can point to a specific node
-dag4.account.connect({
+wrex.account.connect({
     networkVersion: '2.0',
-    beUrl: 'https://be-testnet.constellationnetwork.io',
-    l0Url: 'http://13.52.246.74:9000',
-    l1Url: 'http://13.52.246.74:9010'
+    beUrl: 'http://54.235.210.75:2050',
+    l0Url: 'http://20.249.7.13:9000',
+    l1Url: 'http://20.194.5.191:9000'
 })
 ```
 
 Check address balance
 ```js
 // Get an address balance
-const balance = await dag4.network.getAddressBalance('DAGabc123...');
+const balance = await wrex.network.getAddressBalance('WREXabc123...');
 ```
 
 Get address last reference
 ```js
-dag4.network.getAddressLastAcceptedTransactionRef('DAGabc123...');
+wrex.network.getAddressLastAcceptedTransactionRef('WREXabc123...');
 ```
 
 
 ### Sending transactions
-Dag4.js supports both online and offline transaction signing as well as bulk transaction sending. You must be logged in with a pk and connected to the network to send transactions. 
+wrex.js supports both online and offline transaction signing as well as bulk transaction sending. You must be logged in with a pk and connected to the network to send transactions. 
 
 Send a single transaction
 ```js
-const toAddress = 'DAGabc123...';
+const toAddress = 'WREXabc123...';
 const amount = 25.551;
 const fee = 0;
 
-dag4.account.transferDag(toAddress, amount, fee);
+wrex.account.transferWrex(toAddress, amount, fee);
 ```
 
 Send bulk transactions
 ```js
 const transfers = [
-    {address: 'DAGabc123...', amount: 0.000123, fee: 0},
-    {address: 'DAGabc124...', amount: 0.000124, fee: 0},
-    {address: 'DAGabc125...', amount: 0.000125, fee: 0},
-    {address: 'DAGabc126...', amount: 0.000126, fee: 0},
-    {address: 'DAGabc127...', amount: 0.000127, fee: 0},
-    {address: 'DAGabc128...', amount: 0.000128, fee: 0.00000001}
+    {address: 'WREXabc123...', amount: 0.000123, fee: 0},
+    {address: 'WREXabc124...', amount: 0.000124, fee: 0},
+    {address: 'WREXabc125...', amount: 0.000125, fee: 0},
+    {address: 'WREXabc126...', amount: 0.000126, fee: 0},
+    {address: 'WREXabc127...', amount: 0.000127, fee: 0},
+    {address: 'WREXabc128...', amount: 0.000128, fee: 0.00000001}
 ];
 
-  const hashes = await dag4.account.transferDagBatch(transfers);
+  const hashes = await wrex.account.transferWrexBatch(transfers);
 ```
 
 Sign transactions offline, then send online
 ```js
 // First get the last txn reference, this can also be retrieved from an offline source
-const lastRef = await dag4.network.getAddressLastAcceptedTransactionRef('DAGWalletSendingAddress');
+const lastRef = await wrex.network.getAddressLastAcceptedTransactionRef('WREXWalletSendingAddress');
 
 const transfers = [
-    {address: 'DAGabc123...', amount: 0.000123, fee: 0},
-    {address: 'DAGabc124...', amount: 0.000124, fee: 0}
+    {address: 'WREXabc123...', amount: 0.000123, fee: 0},
+    {address: 'WREXabc124...', amount: 0.000124, fee: 0}
 ];
 
-const txns = await dag4.account.generateBatchTransactions(transfers, lastRef);
+const txns = await wrex.account.generateBatchTransactions(transfers, lastRef);
 
 // Send online when ready
-const hashes = await dag4.account.sendBatchTransactions(txns);
+const hashes = await wrex.account.sendBatchTransactions(txns);
 ```
 
 ### Checking transaction status
@@ -121,14 +121,14 @@ The following process can be used to confirm a transaction has been processed an
 
 ```js
 // Send transaction
-const hash = await dag4.network.postTransaction(txn);
+const hash = await wrex.network.postTransaction(txn);
 
 // Keep checking the transaction status until this returns null
-const pendingTx = await dag4.network.getPendingTransaction(txHash);
+const pendingTx = await wrex.network.getPendingTransaction(txHash);
 
 // Check that the transaction has registered on the block explore API
 if (pendingTx === null) {
-  const confirmedTx = await dag4.network.getTransaction(txHash);
+  const confirmedTx = await wrex.network.getTransaction(txHash);
 
   if (confirmedTx) {
     // Txn is confirmed - from this point the state cannot be changed
@@ -140,41 +140,14 @@ if (pendingTx === null) {
 }
 ```
 
-### Upgrading from networkVersion 1.0
-v1.2.0 of the dag4 package introduces support for Constellation mainnet 2.0 and a number of new features 
-specific to the new network version. It is also 100% backwards compatible with existing mainnet 1.0 
-integrations from earlier versions (1.1.x) of the package. Not all endpoints relevant to mainnet 1.0 
-are used in 2.0 though so there is a migration process to prepare for the switchover in networks. 
-
-Migrate all calls to specific APIs to use dag4.network
+Migrate all calls to specific APIs to use wrex.network
 ```js
-// Mainnet 1.0
-await dag4.network.loadBalancerApi.getAddressLastAcceptedTransactionRef('DAGabc123');
-
-// Mainnet 1.0 and 2.0 support based on configured network version
-await dag4.network.getAddressLastAcceptedTransactionRef('DAGabc123');
+await wrex.network.getAddressLastAcceptedTransactionRef('WREXabc123');
 ```
 
-Use dag4.account as much as possible
+Use wrex.account as much as possible
 ```js
-// mainnet 1.0
-await dag4.keyStore.generateTransaction(...);
-
-// mainnet 1.0 and 2.0 support based on configured network version
-await dag4.account.generateSignedTransaction(...);
-```
-
-After the above changes, both versions of the network are supported with a configuration change
-```js
-// mainnent 1.0 support
-dag4.account.connect({
-    networkVersion: '1.0'
-});
-
-// mainnet 2.0 support
-dag4.account.connect({
-    networkVersion: '2.0'
-});
+await wrex.account.generateSignedTransaction(...);
 ```
 
 ## Documentation
@@ -183,7 +156,7 @@ Documentation can be found at [Wiki][docs].
 
 ## Building
 
-Build the dag4.js package:
+Build the wrex.js package:
 
 ```bash
 npm run build
@@ -195,14 +168,7 @@ npm run build
 npm test --workspaces
 ```
 
-### Community
-
--   [Discord](https://discord.gg/bb8SCX9sWk)
--   [Constellation Telegram](https://t.me/constellationcommunity)]
--   [Stardust Telegram](https://t.me/StardustSupport)]
-
 ---
 ### License
 [![License: GPL v3](https://img.shields.io/badge/License-MIT-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 This project is licensed under the terms of the **MIT** license.
-
