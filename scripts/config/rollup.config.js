@@ -21,7 +21,7 @@ const ROOT = resolve('./')
 const DIST = resolve(ROOT, 'dist')
 const pkg  = require(resolve(ROOT, 'package.json'))
 
-const LIB_NAME = 'wrex';
+const LIB_NAME = 'werx';
 /**
  * Object literals are open-ended for js checking, so we need to be explicit
  * @type {{entry:{esm5: string, esm2015: string},bundles:string}}
@@ -96,7 +96,7 @@ const ESMconfig = {
   output: [
     {
       file: getOutputFileName(
-          resolve(PATHS.bundles, 'wrex.esm.js'),
+          resolve(PATHS.bundles, 'werx.esm.js'),
           ifProduction()
       ),
       format: 'es',
@@ -112,11 +112,11 @@ const UMDconfig = {
   ...CommonConfig,
   //context: 'window',
   input: resolve(PATHS.entry.esm, 'index.js'),
-  //external: Object.keys(pkg.dependencies || {}).filter(key => /^wrex-/.test(key)),
+  //external: Object.keys(pkg.dependencies || {}).filter(key => /^werx-/.test(key)),
   external: [ 'fs' ],
   output: {
     file: getOutputFileName(
-      resolve(PATHS.bundles, 'wrex.umd.js'),
+      resolve(PATHS.bundles, 'werx.umd.js'),
       ifProduction()
     ),
     format: 'umd',
@@ -125,7 +125,7 @@ const UMDconfig = {
     indent: false,
     extend: true,
     banner: `// ${pkg.homepage} v${pkg.version} Copyright ${(new Date).getFullYear()} ${pkg.author}`,
-    //globals: Object.assign({}, ...Object.keys(pkg.dependencies || {}).filter(key => /^wrex-/.test(key)).map(key => ({[key]: "wrex"})))
+    //globals: Object.assign({}, ...Object.keys(pkg.dependencies || {}).filter(key => /^werx-/.test(key)).map(key => ({[key]: "werx"})))
   },
   plugins: removeEmpty(
     /** @type {Plugin[]} */ ([...plugins, ifProduction(terser())])

@@ -1,7 +1,7 @@
 
-# WREX.JS - WREX JavaScript SDK
+# werx.JS - werx JavaScript SDK
 
-This is the WREX [JavaScript SDK][docs] for WREX Hypergraph Network.
+This is the werx [JavaScript SDK][docs] for werx Hypergraph Network.
 
 Please read the [documentation][docs] for more detailed instructions. The following includes basic install and configuration.
 
@@ -10,13 +10,13 @@ Please read the [documentation][docs] for more detailed instructions. The follow
 ### Node
 
 ```bash
-npm install @wrex/wrex
+npm install @estar-solutions/werx
 ```
 
 ### Yarn
 
 ```bash
-yarn add @wrex/wrex
+yarn add @estar-solutions/werx
 ```
 
 ## Usage
@@ -25,33 +25,31 @@ yarn add @wrex/wrex
 
 Create a private key
 ```js
-const pk = wrex.keyStore.generatePrivateKey();
+const pk = werx.keyStore.generatePrivateKey();
 ```
 
 Login with the private key
 ```js
-wrex.account.loginPrivateKey(pk);
+werx.account.loginPrivateKey(pk);
 ```
 
-Check WREX address
+Check werx address
 ```js
-const address = wrex.account.address;
+const address = werx.account.address;
 ```
 
 ### Connecting to the network
 ```js
-import { wrex } from '@wrex/wrex';
+import { werx } from '@estar-solutions/werx';
 
 // Connect to default network endpoints
-wrex.account.connect({
-    networkVersion: '2.0',
+werx.account.connect({
     testnet: true
 })
 
 // Or provide specific configuration
 // L0/L1 urls can point to a specific node
-wrex.account.connect({
-    networkVersion: '2.0',
+werx.account.connect({
     beUrl: 'http://54.235.210.75:2050',
     l0Url: 'http://20.249.7.13:9000',
     l1Url: 'http://20.194.5.191:9000'
@@ -61,55 +59,55 @@ wrex.account.connect({
 Check address balance
 ```js
 // Get an address balance
-const balance = await wrex.network.getAddressBalance('WREXabc123...');
+const balance = await werx.network.getAddressBalance('werxabc123...');
 ```
 
 Get address last reference
 ```js
-wrex.network.getAddressLastAcceptedTransactionRef('WREXabc123...');
+werx.network.getAddressLastAcceptedTransactionRef('werxabc123...');
 ```
 
 
 ### Sending transactions
-wrex.js supports both online and offline transaction signing as well as bulk transaction sending. You must be logged in with a pk and connected to the network to send transactions. 
+werx.js supports both online and offline transaction signing as well as bulk transaction sending. You must be logged in with a pk and connected to the network to send transactions. 
 
 Send a single transaction
 ```js
-const toAddress = 'WREXabc123...';
+const toAddress = 'werxabc123...';
 const amount = 25.551;
 const fee = 0;
 
-wrex.account.transferWrex(toAddress, amount, fee);
+werx.account.transferwerx(toAddress, amount, fee);
 ```
 
 Send bulk transactions
 ```js
 const transfers = [
-    {address: 'WREXabc123...', amount: 0.000123, fee: 0},
-    {address: 'WREXabc124...', amount: 0.000124, fee: 0},
-    {address: 'WREXabc125...', amount: 0.000125, fee: 0},
-    {address: 'WREXabc126...', amount: 0.000126, fee: 0},
-    {address: 'WREXabc127...', amount: 0.000127, fee: 0},
-    {address: 'WREXabc128...', amount: 0.000128, fee: 0.00000001}
+    {address: 'werxabc123...', amount: 0.000123, fee: 0},
+    {address: 'werxabc124...', amount: 0.000124, fee: 0},
+    {address: 'werxabc125...', amount: 0.000125, fee: 0},
+    {address: 'werxabc126...', amount: 0.000126, fee: 0},
+    {address: 'werxabc127...', amount: 0.000127, fee: 0},
+    {address: 'werxabc128...', amount: 0.000128, fee: 0.00000001}
 ];
 
-  const hashes = await wrex.account.transferWrexBatch(transfers);
+  const hashes = await werx.account.transferwerxBatch(transfers);
 ```
 
 Sign transactions offline, then send online
 ```js
 // First get the last txn reference, this can also be retrieved from an offline source
-const lastRef = await wrex.network.getAddressLastAcceptedTransactionRef('WREXWalletSendingAddress');
+const lastRef = await werx.network.getAddressLastAcceptedTransactionRef('werxWalletSendingAddress');
 
 const transfers = [
-    {address: 'WREXabc123...', amount: 0.000123, fee: 0},
-    {address: 'WREXabc124...', amount: 0.000124, fee: 0}
+    {address: 'werxabc123...', amount: 0.000123, fee: 0},
+    {address: 'werxabc124...', amount: 0.000124, fee: 0}
 ];
 
-const txns = await wrex.account.generateBatchTransactions(transfers, lastRef);
+const txns = await werx.account.generateBatchTransactions(transfers, lastRef);
 
 // Send online when ready
-const hashes = await wrex.account.sendBatchTransactions(txns);
+const hashes = await werx.account.sendBatchTransactions(txns);
 ```
 
 ### Checking transaction status
@@ -121,14 +119,14 @@ The following process can be used to confirm a transaction has been processed an
 
 ```js
 // Send transaction
-const hash = await wrex.network.postTransaction(txn);
+const hash = await werx.network.postTransaction(txn);
 
 // Keep checking the transaction status until this returns null
-const pendingTx = await wrex.network.getPendingTransaction(txHash);
+const pendingTx = await werx.network.getPendingTransaction(txHash);
 
 // Check that the transaction has registered on the block explore API
 if (pendingTx === null) {
-  const confirmedTx = await wrex.network.getTransaction(txHash);
+  const confirmedTx = await werx.network.getTransaction(txHash);
 
   if (confirmedTx) {
     // Txn is confirmed - from this point the state cannot be changed
@@ -140,14 +138,14 @@ if (pendingTx === null) {
 }
 ```
 
-Migrate all calls to specific APIs to use wrex.network
+Migrate all calls to specific APIs to use werx.network
 ```js
-await wrex.network.getAddressLastAcceptedTransactionRef('WREXabc123');
+await werx.network.getAddressLastAcceptedTransactionRef('werxabc123');
 ```
 
-Use wrex.account as much as possible
+Use werx.account as much as possible
 ```js
-await wrex.account.generateSignedTransaction(...);
+await werx.account.generateSignedTransaction(...);
 ```
 
 ## Documentation
@@ -156,7 +154,7 @@ Documentation can be found at [Wiki][docs].
 
 ## Building
 
-Build the wrex.js package:
+Build the werx.js package:
 
 ```bash
 npm run build
