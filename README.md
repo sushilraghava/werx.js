@@ -51,20 +51,20 @@ werx.account.connect({
 // L0/L1 urls can point to a specific node
 werx.account.connect({
     beUrl: 'http://54.235.210.75:2050',
-    l0Url: 'http://20.249.7.13:9000',
-    l1Url: 'http://20.194.5.191:9000'
+    l0Url: 'http://3.14.19.8:9000',
+    l1Url: 'http://3.14.19.8:9000'
 })
 ```
 
 Check address balance
 ```js
 // Get an address balance
-const balance = await werx.network.getAddressBalance('werxabc123...');
+const balance = await werx.network.getAddressBalance('WERXabc123...');
 ```
 
 Get address last reference
 ```js
-werx.network.getAddressLastAcceptedTransactionRef('werxabc123...');
+werx.network.getAddressLastAcceptedTransactionRef('WERXabc123...');
 ```
 
 
@@ -73,7 +73,7 @@ werx.js supports both online and offline transaction signing as well as bulk tra
 
 Send a single transaction
 ```js
-const toAddress = 'werxabc123...';
+const toAddress = 'WERXabc123...';
 const amount = 25.551;
 const fee = 0;
 
@@ -140,7 +140,7 @@ if (pendingTx === null) {
 
 Migrate all calls to specific APIs to use werx.network
 ```js
-await werx.network.getAddressLastAcceptedTransactionRef('werxabc123');
+await werx.network.getAddressLastAcceptedTransactionRef('WERXabc123');
 ```
 
 Use werx.account as much as possible
