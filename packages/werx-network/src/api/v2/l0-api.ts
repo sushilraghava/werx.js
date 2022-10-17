@@ -42,7 +42,7 @@ export class L0Api {
   // Metrics
   async getMetrics () {
     // TODO: add parsing for v2 response... returns weird string
-    return this.service.$get<string>('/metric'); 
+    return this.service.$get<string>('/metrics'); 
   }
 
   // werx

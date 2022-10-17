@@ -147,7 +147,7 @@ export class WerxAccount {
     return keyStore.generateTransactionWithHashV2(amount, toAddress, this.keyTrio, lastRef as any, fee);
   }
 
-  async transferwerx (toAddress: string, amount: number, fee = 0, autoEstimateFee = false): Promise<PendingTx> {
+  async transferWerx (toAddress: string, amount: number, fee = 0, autoEstimateFee = false): Promise<PendingTx> {
     let normalizedAmount = Math.floor(new BigNumber(amount).multipliedBy(WERX_DECIMALS).toNumber());
     const lastRef: any = await this.network.getAddressLastAcceptedTransactionRef(this.address);
 
@@ -271,7 +271,7 @@ export class WerxAccount {
     return hashes;
   }
 
-  async transferwerxBatch(transfers: TransferBatchItem[], lastRef?: TransactionReference) {
+  async transferWerxBatch(transfers: TransferBatchItem[], lastRef?: TransactionReference) {
     const txns = await this.generateBatchTransactions(transfers, lastRef);
 
     return this.sendBatchTransactions(txns);

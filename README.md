@@ -77,21 +77,21 @@ const toAddress = 'werxabc123...';
 const amount = 25.551;
 const fee = 0;
 
-werx.account.transferwerx(toAddress, amount, fee);
+werx.account.transferWerx(toAddress, amount, fee);
 ```
 
 Send bulk transactions
 ```js
 const transfers = [
-    {address: 'werxabc123...', amount: 0.000123, fee: 0},
-    {address: 'werxabc124...', amount: 0.000124, fee: 0},
-    {address: 'werxabc125...', amount: 0.000125, fee: 0},
-    {address: 'werxabc126...', amount: 0.000126, fee: 0},
-    {address: 'werxabc127...', amount: 0.000127, fee: 0},
-    {address: 'werxabc128...', amount: 0.000128, fee: 0.00000001}
+    {address: 'WERXabc123...', amount: 0.000123, fee: 0},
+    {address: 'WERXabc124...', amount: 0.000124, fee: 0},
+    {address: 'WERXabc125...', amount: 0.000125, fee: 0},
+    {address: 'WERXabc126...', amount: 0.000126, fee: 0},
+    {address: 'WERXabc127...', amount: 0.000127, fee: 0},
+    {address: 'WERXabc128...', amount: 0.000128, fee: 0.00000001}
 ];
 
-  const hashes = await werx.account.transferwerxBatch(transfers);
+  const hashes = await werx.account.transferWerxBatch(transfers);
 ```
 
 Sign transactions offline, then send online
@@ -100,8 +100,8 @@ Sign transactions offline, then send online
 const lastRef = await werx.network.getAddressLastAcceptedTransactionRef('werxWalletSendingAddress');
 
 const transfers = [
-    {address: 'werxabc123...', amount: 0.000123, fee: 0},
-    {address: 'werxabc124...', amount: 0.000124, fee: 0}
+    {address: 'WERXabc123...', amount: 0.000123, fee: 0},
+    {address: 'WERXabc124...', amount: 0.000124, fee: 0}
 ];
 
 const txns = await werx.account.generateBatchTransactions(transfers, lastRef);

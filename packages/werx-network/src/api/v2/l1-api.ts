@@ -18,7 +18,7 @@ export class L1Api {
 
   async getMetrics () {
     // TODO: add parsing for v2 response... returns 404
-    return this.service.$get<string>('/metric');
+    return this.service.$get<string>('/metrics');
   }
 
   async getAddressLastAcceptedTransactionRef (address: string) {

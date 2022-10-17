@@ -35,7 +35,7 @@ export class BlockExplorerV2Api {
   }
 
   async getLatestSnapshotTransactions() {
-    return this.service.$get<TransactionV2>('/global-snapshots/latest/transaction');
+    return this.service.$get<TransactionV2>('/global-snapshots/latest/transactions');
   }
 
   async getLatestSnapshotRewards() {
