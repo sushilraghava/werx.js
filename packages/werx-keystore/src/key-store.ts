@@ -159,11 +159,11 @@ export class KeyStore {
   validateWerxAddress (address: string) {
     if (!address) return false;
 
-    const validLen = address.length === 40;
-    const validPrefix = address.substr(0, 3) === 'WERX';
-    const par = Number(address.charAt(3));
+    const validLen = address.length === 41;
+    const validPrefix = address.substr(0, 4) === 'WERX';
+    const par = Number(address.charAt(4));
     const validParity = par >= 0 && par < 10;
-    const match = BASE58_ALPHABET.exec(address.substring(4));
+    const match = BASE58_ALPHABET.exec(address.substring(5));
     const validBase58 = match && match.length > 0 && match[0].length === 36;
 
     return validLen && validPrefix && validParity && validBase58;
