@@ -1,6 +1,6 @@
 {
   "name": "@estar-solutions/werx",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "WERX HyperGraph Network JavaScript API",
   "author": "Hoang Duc Tri",
   "email": "trihd123@gmail.com",
@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "@estar-solutions/werx-core": "1.0.5",
-    "@estar-solutions/werx-keystore": "1.2.3",
+    "@estar-solutions/werx-keystore": "1.2.4",
     "@estar-solutions/werx-network": "1.2.11",
-    "@estar-solutions/werx-wallet": "2.0.3",
+    "@estar-solutions/werx-wallet": "2.0.5",
     "cross-fetch": "^3.1.5"
   },
   "devDependencies": {

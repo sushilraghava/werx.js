@@ -1,6 +1,6 @@
 {
   "name": "@estar-solutions/werx-keystore",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A key management tool for the WERX Hypergraph Network",
   "author": "Hoang Duc Tri",
   "email": "trihd123@gmail.com",
