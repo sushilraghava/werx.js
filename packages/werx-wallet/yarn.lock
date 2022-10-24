@@ -43,10 +43,10 @@
     stream-browserify "^3.0.0"
     uuid "^3.4.0"
 
-"@estar-solutions/werx-network@^1.2.11":
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@estar-solutions/werx-network/-/werx-network-1.2.11.tgz#4455f036319b1f00e6828428c9283e6f03794bf6"
-  integrity sha512-CCEDaU+6NnkhwHKnbuFl1tbNwKPaKwor59xqxfjOj0261kGfuI+P92SEeVnGMJRZBNV8XcWtOWDXufPsoUQO3A==
+"@estar-solutions/werx-network@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@estar-solutions/werx-network/-/werx-network-1.3.1.tgz#bb2577c28d8238f9335241b43f4cdc71a7d3d448"
+  integrity sha512-tHkwZRkBMSRBY9wzneWoOiuuvQK6butDqifSssurXeKe2qTsn3NYGuubD/zm64UvU06g/WsDjMx5WfoCQ5bWIw==
   dependencies:
     "@estar-solutions/werx-core" "1.0.5"
     bignumber.js "^9.0.1"

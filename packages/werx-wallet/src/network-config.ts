@@ -2,14 +2,14 @@
 export const networkConfig = {
   2: {
     mainnet: {
-      beUrl: 'http://54.235.210.75:2050',
-      l0Url: 'http://3.14.19.8:9000',
-      l1Url: 'http://3.14.19.8:9010'
+      beUrl: 'https://54.235.210.75:2050',
+      l0Url: 'https://18.118.120.76:9000',
+      l1Url: 'https://18.118.120.76:9010'
     },
     testnet: {
-      beUrl: 'http://54.235.210.75:2050',
-      l0Url: 'http://3.14.19.8:9000',
-      l1Url: 'http://3.14.19.8:9010'
+      beUrl: 'https://54.235.210.75:2050',
+      l0Url: 'https://18.118.120.76:9000',
+      l1Url: 'https://18.118.120.76:9010'
     }
   }
 }
