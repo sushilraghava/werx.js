@@ -64,23 +64,23 @@
     stream-browserify "^3.0.0"
     uuid "^3.4.0"
 
-"@estar-solutions/werx-network@^1.2.15":
-  version "1.2.15"
-  resolved "https://registry.yarnpkg.com/@estar-solutions/werx-network/-/werx-network-1.2.15.tgz#0807221dac61ef48d9467b7e470213d193d5243c"
-  integrity sha512-SbZW1Gvdc6ykLxGEOi6hCKvxNMM/C5vkPzwa5bETC6r6SSpZ/CFPQ7SqGp4yu9bdx9MGsb4UiaIrwgj2bp2O2w==
+"@estar-solutions/werx-network@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@estar-solutions/werx-network/-/werx-network-1.3.0.tgz#b7a23275d82bec9f8afc9a2150dc8ec9e5d1a0bd"
+  integrity sha512-xA8AUycYXQN6ovqUTQN3jjZ+jfTqVGQM3edJvs0D3PRgE4fDyYY9krcX9BzfzDUteFF0jSE2PcDH6EP5s1L4Hw==
   dependencies:
     "@estar-solutions/werx-core" "1.0.5"
     bignumber.js "^9.0.1"
     rxjs "^6.6.3"
 
-"@estar-solutions/werx-wallet@2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@estar-solutions/werx-wallet/-/werx-wallet-2.0.6.tgz#f774ebcce3fb59ccdd1c1dcd8c7c22dbc21e31ec"
-  integrity sha512-LGN2Gk4vyot8UQ2m2goAIkNVsj+1czSvu3uCGV2WAdpuWPBIOoxF/siua9bJIjbAN6qwoR8fhm1rsy5KOKdQXQ==
+"@estar-solutions/werx-wallet@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@estar-solutions/werx-wallet/-/werx-wallet-2.1.0.tgz#410c72655e7681ce6147818ae9fca2ea0d8206d0"
+  integrity sha512-IAWGFXqzP2v8oTUjpUza2CCShGYt6QQIS2aIIjLpkIENHTFn5r3IxsgM1q0It3V1E4OL7jbSeGtRkjLVSN/1JQ==
   dependencies:
     "@estar-solutions/werx-core" "1.0.5"
     "@estar-solutions/werx-keystore" "1.2.4"
-    "@estar-solutions/werx-network" "^1.2.15"
+    "@estar-solutions/werx-network" "^1.3.0"
     bignumber.js "^9.0.1"
     rimraf "^3.0.2"
     typescript "^4.6.4"
