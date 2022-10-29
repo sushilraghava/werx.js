@@ -50,9 +50,9 @@ werx.account.connect({
 // Or provide specific configuration
 // L0/L1 urls can point to a specific node
 werx.account.connect({
-    beUrl: 'http://54.235.210.75:2050',
-    l0Url: 'http://3.14.19.8:9000',
-    l1Url: 'http://3.14.19.8:9000'
+    beUrl: 'https://54.235.210.75:2050',
+    l0Url: 'https://3.21.84.0:9000',
+    l1Url: 'https://3.21.84.0:9010'
 })
 ```
 
