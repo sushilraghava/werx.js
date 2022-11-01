@@ -1,6 +1,6 @@
 {
   "name": "@estar-solutions/werx",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "WERX HyperGraph Network JavaScript API",
   "author": "Hoang Duc Tri",
   "email": "trihd123@gmail.com",
@@ -17,7 +17,7 @@
     "build-all": "npm run build && npm run build-rollup",
     "prerelease": "npm run build && npm version patch --no-git-tag-version",
     "release": "node ./scripts/package/copy && npm run release:npm",
-    "release:npm": "npm publish -access public",
+    "release:npm": "npm publish --access public",
     "release:preflight": "npm pack ./dist --dry-run"
   },
   "repository": {
@@ -30,8 +30,8 @@
   "dependencies": {
     "@estar-solutions/werx-core": "1.0.5",
     "@estar-solutions/werx-keystore": "1.2.4",
-    "@estar-solutions/werx-network": "^1.3.1",
-    "@estar-solutions/werx-wallet": "2.1.1",
+    "@estar-solutions/werx-network": "^1.3.3",
+    "@estar-solutions/werx-wallet": "2.1.3",
     "cross-fetch": "^3.1.5"
   },
   "devDependencies": {
