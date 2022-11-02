@@ -50,14 +50,9 @@ werx.account.connect({
 // Or provide specific configuration
 // L0/L1 urls can point to a specific node
 werx.account.connect({
-    beUrl: 'https://54.235.210.75:2050',
-<<<<<<< HEAD
-    l0Url: 'https://18.118.120.76:9000',
-    l1Url: 'https://18.118.120.76:9010'
-=======
-    l0Url: 'https://3.21.84.0:9000',
-    l1Url: 'https://3.21.84.0:9010'
->>>>>>> 27dc84f7367d5c6adb9598b212abdb9ce3ac0dfe
+    beUrl: 'https://testnet.werxnodes.com:2050',
+    l0Url: 'https://werxnodes.com:9000',
+    l1Url: 'https://werxnodes.com:9010'
 })
 ```
 
